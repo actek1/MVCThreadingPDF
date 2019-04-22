@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ff8449308e764eb6a0c87d254d377698" Name="Diagram1">
+        <EntityTypeShape EntityType="PLEToteModel.BettorROVReportBreaks" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.Bettors" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.BettorTickets" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.Locations" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.ROVReports" Width="1.5" PointX="3" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.Taxes" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.TicketProperties" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.Tickets" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.TicketWager" Width="1.5" PointX="10.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.Totes" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.vReportTaxes" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.vReportTickets" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PLEToteModel.vTickets" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
+        <AssociationConnector Association="PLEToteModel.FK_BettorROVReportBreaks_Bettors" ManuallyRouted="false" />
+        <AssociationConnector Association="PLEToteModel.FK_BettorROVReportBreaks_ROVReports" ManuallyRouted="false" />
+        <AssociationConnector Association="PLEToteModel.FK_BettorTickets_Bettors" ManuallyRouted="false" />
+        <AssociationConnector Association="PLEToteModel.FK_BettorTickets_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="PLEToteModel.FK_BettorTickets_Tickets" ManuallyRouted="false" />
+        <AssociationConnector Association="PLEToteModel.FK_Locations_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="PLEToteModel.FK_Locations_Totes" ManuallyRouted="false" />
+        <AssociationConnector Association="PLEToteModel.FK_Tickets_Locations1" ManuallyRouted="false" />
+        <AssociationConnector Association="PLEToteModel.FK_CertifiedTickets_Tickets1" ManuallyRouted="false" />
+        <AssociationConnector Association="PLEToteModel.FK_Tickets_Totes" ManuallyRouted="false" />
+        <AssociationConnector Association="PLEToteModel.FK_TicketWager_Tickets1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

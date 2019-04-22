@@ -1,0 +1,1780 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PLEToteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BettorROVReportBreaks">
+          <Key>
+            <PropertyRef Name="BettorId" />
+            <PropertyRef Name="ROVReportId" />
+            <PropertyRef Name="BreakDate" />
+          </Key>
+          <Property Name="BettorId" Type="int" Nullable="false" />
+          <Property Name="ROVReportId" Type="int" Nullable="false" />
+          <Property Name="ReportedAmount" Type="money" />
+          <Property Name="BreakDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bettors">
+          <Key>
+            <PropertyRef Name="BettorId" />
+          </Key>
+          <Property Name="BettorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BettorName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BettorLastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BettorMotherMaidenName" Type="varchar" MaxLength="50" />
+          <Property Name="BettorBirthDate" Type="datetime" Nullable="false" />
+          <Property Name="BettorNativeCountry" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="BettorNativeCountryDesc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BettorNationality" Type="varchar" MaxLength="3" />
+          <Property Name="BettorNationalityDesc" Type="varchar" MaxLength="50" />
+          <Property Name="BettorGender" Type="char" MaxLength="1" />
+          <Property Name="BettorRFC" Type="varchar" MaxLength="13" />
+          <Property Name="BettorCURP" Type="varchar" MaxLength="18" />
+          <Property Name="BettorEmail" Type="varchar" MaxLength="50" />
+          <Property Name="BettorPhoneCode" Type="varchar" MaxLength="2" />
+          <Property Name="BettorPhoneNumber" Type="varchar" MaxLength="12" />
+          <Property Name="BettorActivity" Type="varchar" MaxLength="10" />
+          <Property Name="BettorActivityDesc" Type="varchar" MaxLength="180" />
+          <Property Name="IsVIP" Type="bit" Nullable="false" />
+          <Property Name="IsPersonaFisica" Type="bit" Nullable="false" />
+          <Property Name="IsForeigner" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IdNumber" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="IdType" Type="int" Nullable="false" />
+          <Property Name="IdTypeDesc" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="IdIssuingAuthority" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IdAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdAddressNumber" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IdAddressInternalNumber" Type="varchar" MaxLength="3" />
+          <Property Name="IdColonia" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdAddressCity" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdAddressState" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdAddressZipCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IdAddressResidenceCountry" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="IdAddressResidenceCountryDesc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdOther" Type="varchar" MaxLength="200" />
+          <Property Name="IdValidUntil" Type="datetime" Nullable="false" />
+          <Property Name="RegisteredOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="BettorIdBeneficiario" Type="int" />
+          <Property Name="AlertaClave" Type="varchar" MaxLength="4" />
+          <Property Name="AlertaDescripcion" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="BettorTickets">
+          <Key>
+            <PropertyRef Name="ToteId" />
+            <PropertyRef Name="BettorType" />
+            <PropertyRef Name="ETSN" />
+          </Key>
+          <Property Name="TicketNumber" Type="bigint" />
+          <Property Name="ToteId" Type="int" Nullable="false" />
+          <Property Name="BettorType" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="BettorId" Type="int" Nullable="false" />
+          <Property Name="ETSN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RealAmount" Type="money" />
+          <Property Name="ReportedAmount" Type="money" />
+          <Property Name="TaxAmount" Type="money" />
+          <Property Name="OpDate" Type="datetime" />
+          <Property Name="InstrumentoMonetario" Type="int" Nullable="false" />
+          <Property Name="InstrumentoMonetarioDesc" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ChequeInstitucion" Type="varchar" MaxLength="200" />
+          <Property Name="ChequeNoCuenta" Type="varchar" MaxLength="18" />
+          <Property Name="ChequeNo" Type="varchar" MaxLength="10" />
+          <Property Name="SpeiClaveRastreo" Type="varchar" MaxLength="30" />
+          <Property Name="TeftFolio" Type="varchar" MaxLength="30" />
+          <Property Name="RegisteredOn" Type="datetime" Nullable="false" />
+          <Property Name="RegisteredBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="LocationId" />
+            <PropertyRef Name="ToteId" />
+          </Key>
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="ToteId" Type="int" Nullable="false" />
+          <Property Name="IsFormalLocation" Type="bit" Nullable="false" />
+          <Property Name="FormalLocationId" Type="int" />
+          <Property Name="FormalToteId" Type="int" />
+          <Property Name="LocationName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="LocationAddress" Type="varchar" MaxLength="200" />
+          <Property Name="LocationEmail" Type="varchar" MaxLength="50" />
+          <Property Name="LocationGroup" Type="varchar" MaxLength="50" />
+          <Property Name="LicenseeOperatorId" Type="varchar" MaxLength="20" />
+          <Property Name="LicenseeOperatorName" Type="varchar" MaxLength="500" />
+          <Property Name="LicenseeId" Type="varchar" MaxLength="20" />
+          <Property Name="LicenseeName" Type="varchar" MaxLength="500" />
+          <Property Name="InfraestructureUse" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="LicenseeOperatorEmail" Type="varchar" MaxLength="250" />
+          <Property Name="TicketValidity" Type="tinyint" Nullable="false" />
+          <Property Name="VoucherValidity" Type="tinyint" Nullable="false" />
+          <Property Name="DefaultCurrency" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="ExchangeRate" Type="money" Nullable="false" />
+          <Property Name="BetTaxRate" Type="decimal" Precision="6" Scale="4" />
+          <Property Name="RaceWinTaxBase" Type="char" MaxLength="1" />
+          <Property Name="SportWinTaxBase" Type="char" MaxLength="1" />
+          <Property Name="WinTaxRate" Type="decimal" Precision="6" Scale="4" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LocationZipCode" Type="varchar" MaxLength="5" />
+          <Property Name="RepresenterName" Type="varchar" MaxLength="50" />
+          <Property Name="RepresenterRfc" Type="varchar" MaxLength="50" />
+          <Property Name="RepresenterCurp" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ROVReports">
+          <Key>
+            <PropertyRef Name="ROVReportId" />
+          </Key>
+          <Property Name="ROVReportId" Type="int" Nullable="false" />
+          <Property Name="ReportDesc" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="OutputFormat" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CutEnabled" Type="bit" Nullable="false" />
+          <Property Name="IncludeSold" Type="bit" Nullable="false" />
+          <Property Name="AmountSoldLimit" Type="money" />
+          <Property Name="IncludeCashed" Type="bit" Nullable="false" />
+          <Property Name="AmountCashedLimit" Type="money" />
+          <Property Name="IncludeIndividualTickets" Type="bit" Nullable="false" />
+          <Property Name="IncludeAccumulativeTickets" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Taxes">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="int" Nullable="false" />
+          <Property Name="TaxName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaxType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AppliesTo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="BaseField" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TaxRate" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="InsertedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TicketProperties">
+          <Key>
+            <PropertyRef Name="ToteId" />
+            <PropertyRef Name="TicketNumber" />
+            <PropertyRef Name="Property" />
+          </Key>
+          <Property Name="ToteId" Type="int" Nullable="false" />
+          <Property Name="TicketNumber" Type="bigint" Nullable="false" />
+          <Property Name="Property" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RegisteredOn" Type="datetime" Nullable="false" />
+          <Property Name="PropertyValue" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="TicketNumber" />
+            <PropertyRef Name="ToteId" />
+          </Key>
+          <Property Name="TicketNumber" Type="bigint" Nullable="false" />
+          <Property Name="ToteId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="ETSN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TicketType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TicketStatus" Type="tinyint" Nullable="false" />
+          <Property Name="SoldDate" Type="datetime" Nullable="false" />
+          <Property Name="SoldValue" Type="money" Nullable="false" />
+          <Property Name="WinValue" Type="money" Nullable="false" />
+          <Property Name="CommissionValue" Type="money" />
+          <Property Name="BetTaxValue" Type="money" />
+          <Property Name="SettledDate" Type="datetime" />
+          <Property Name="SettledValue" Type="money" />
+          <Property Name="RefundValue" Type="money" />
+          <Property Name="CashedDate" Type="datetime" />
+          <Property Name="CashedValue" Type="money" />
+          <Property Name="WinTaxValue" Type="money" />
+          <Property Name="ExpirationDate" Type="datetime" />
+          <Property Name="Currency" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="ExchangeRate" Type="money" />
+          <Property Name="LastEvent" Type="datetime" Nullable="false" />
+          <Property Name="SoldTillSessionId" Type="int" />
+          <Property Name="SoldCashier" Type="varchar" MaxLength="75" />
+          <Property Name="SoldTerminal" Type="varchar" MaxLength="50" />
+          <Property Name="CashedTillSessionId" Type="int" />
+          <Property Name="CashedCashier" Type="varchar" MaxLength="75" />
+          <Property Name="CashedTerminal" Type="varchar" MaxLength="50" />
+          <Property Name="OriginalVoucherId" Type="int" />
+          <Property Name="NumberOfDetails" Type="tinyint" Nullable="false" />
+          <Property Name="WagerType" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TicketWager">
+          <Key>
+            <PropertyRef Name="TicketWagerId" />
+          </Key>
+          <Property Name="TicketWagerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TicketNumber" Type="bigint" Nullable="false" />
+          <Property Name="ToteId" Type="int" Nullable="false" />
+          <Property Name="EventDate" Type="datetime" Nullable="false" />
+          <Property Name="WagerHeader" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="WagerDetail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="WagerExtraInfo" Type="varchar" MaxLength="50" />
+          <Property Name="WagerSource" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Totes">
+          <Key>
+            <PropertyRef Name="ToteId" />
+          </Key>
+          <Property Name="ToteId" Type="int" Nullable="false" />
+          <Property Name="ToteName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DailyRecapReports" Type="bit" Nullable="false" />
+          <Property Name="ReportingStartDate" Type="datetime" Nullable="false" />
+          <Property Name="PSADataExport" Type="bit" Nullable="false" />
+          <Property Name="PreventMoneyLaundry" Type="bit" Nullable="false" />
+          <Property Name="TicketRePrint" Type="bit" />
+          <Property Name="HasSports" Type="bit" Nullable="false" />
+          <Property Name="HasRaces" Type="bit" Nullable="false" />
+          <Property Name="HasSelfService" Type="bit" Nullable="false" />
+          <Property Name="AdminLocations" Type="bit" Nullable="false" />
+          <Property Name="LocalStored" Type="bit" Nullable="false" />
+          <Property Name="WinBase" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthorizationRoleId" Type="int" Nullable="false" />
+          <Property Name="ETSNLength" Type="int" Nullable="false" />
+          <Property Name="IsETSNNumeric" Type="bit" Nullable="false" />
+          <Property Name="IsTicketNumberSensible" Type="bit" Nullable="false" />
+          <Property Name="HourAdjustment" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PLETote.dbo.vReportTaxes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vReportTaxes">
+          <Key>
+            <PropertyRef Name="TicketNumber" />
+            <PropertyRef Name="LocationId" />
+            <PropertyRef Name="ToteId" />
+            <PropertyRef Name="ETSN" />
+          </Key>
+          <Property Name="TicketNumber" Type="bigint" Nullable="false" />
+          <Property Name="TicketType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TaxId" Type="int" />
+          <Property Name="TaxName" Type="varchar" MaxLength="50" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="LocationName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ToteId" Type="int" Nullable="false" />
+          <Property Name="TicketStatus" Type="tinyint" Nullable="false" />
+          <Property Name="ETSN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TerminalCashed" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="CashedDate" Type="datetime" />
+          <Property Name="CashedDateOp" Type="datetime" />
+          <Property Name="SoldValue" Type="money" Nullable="false" />
+          <Property Name="SoldValue_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="TicketWin" Type="money" />
+          <Property Name="TicketWin_Es" Type="decimal" Precision="38" Scale="11" />
+          <Property Name="PayoutValue" Type="money" />
+          <Property Name="PayoutValue_Es" Type="decimal" Precision="38" Scale="11" />
+          <Property Name="RefundValue" Type="money" />
+          <Property Name="RefundValue_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="TaxRate" Type="decimal" Precision="5" Scale="3" />
+          <Property Name="TaxValue" Type="money" />
+          <Property Name="TaxValue_Es" Type="decimal" Precision="38" Scale="8" />
+          <Property Name="ExchangeRate" Type="money" Nullable="false" />
+          <Property Name="Estrategia" Type="decimal" Precision="3" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PLETote.dbo.vReportTickets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vReportTickets">
+          <Key>
+            <PropertyRef Name="TicketNumber" />
+            <PropertyRef Name="LocationId" />
+            <PropertyRef Name="ToteId" />
+            <PropertyRef Name="ETSN" />
+          </Key>
+          <Property Name="TicketNumber" Type="bigint" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="ToteId" Type="int" Nullable="false" />
+          <Property Name="TerminalSold" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="TerminalCashed" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="LocationName" Type="varchar" MaxLength="500" />
+          <Property Name="TicketType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ETSN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DateSold" Type="datetime" Nullable="false" />
+          <Property Name="DateSoldOp" Type="datetime" />
+          <Property Name="DatePaid" Type="datetime" />
+          <Property Name="DatePaidOp" Type="datetime" />
+          <Property Name="DateSettled" Type="datetime" />
+          <Property Name="DateSettledOp" Type="datetime" />
+          <Property Name="DateExpired" Type="datetime" />
+          <Property Name="DateExpiredOp" Type="datetime" />
+          <Property Name="DateVoided" Type="datetime" />
+          <Property Name="DateVoidedOp" Type="datetime" />
+          <Property Name="TicketDescription" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TillSessionSold" Type="int" />
+          <Property Name="TillSessionCashed" Type="int" />
+          <Property Name="Estrategia" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="TicketStatus" Type="tinyint" Nullable="false" />
+          <Property Name="WriteTake" Type="money" Nullable="false" />
+          <Property Name="WriteTake_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="Refund" Type="money" />
+          <Property Name="Refund_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="CreditsRefund" Type="money" />
+          <Property Name="CreditsRefund_Es" Type="decimal" Precision="25" Scale="6" />
+          <Property Name="Win" Type="money" />
+          <Property Name="Win_Es" Type="decimal" Precision="38" Scale="11" />
+          <Property Name="CreditsWin" Type="money" />
+          <Property Name="CreditsWin_Es" Type="decimal" Precision="25" Scale="6" />
+          <Property Name="Payout" Type="money" />
+          <Property Name="Payout_Es" Type="decimal" Precision="38" Scale="11" />
+          <Property Name="RefundUnpaid" Type="money" />
+          <Property Name="RefundUnpaid_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="CreditsRefundUnpaid" Type="money" />
+          <Property Name="CreditsRefundUnpaid_Es" Type="decimal" Precision="25" Scale="6" />
+          <Property Name="WinUnpaid" Type="decimal" Precision="38" Scale="10" />
+          <Property Name="WinUnpaid_Es" Type="decimal" Precision="38" Scale="10" />
+          <Property Name="CreditsWinUnpaid" Type="money" />
+          <Property Name="CreditsWinUnpaid_Es" Type="decimal" Precision="25" Scale="6" />
+          <Property Name="PayoutUnpaid" Type="decimal" Precision="38" Scale="10" />
+          <Property Name="PayoutUnpaid_Es" Type="decimal" Precision="38" Scale="10" />
+          <Property Name="Payoff" Type="money" />
+          <Property Name="Payoff_Es" Type="decimal" Precision="38" Scale="11" />
+          <Property Name="TaxRate" Type="decimal" Precision="5" Scale="3" />
+          <Property Name="SoldValue" Type="money" Nullable="false" />
+          <Property Name="SoldValue_ES" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="CashedValue" Type="money" />
+          <Property Name="CashedValue_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="SettledValue" Type="money" />
+          <Property Name="SettledValue_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="RefundValue" Type="money" Nullable="false" />
+          <Property Name="RefundValue_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="ExchangeRate" Type="money" />
+          <Property Name="TaxBet" Type="money" />
+          <Property Name="TaxBet_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="TaxWin" Type="money" />
+          <Property Name="TaxWin_Es" Type="decimal" Precision="38" Scale="8" />
+          <Property Name="TaxId" Type="int" />
+          <Property Name="WinTaxId" Type="int" />
+          <Property Name="BetTaxId" Type="int" />
+          <Property Name="Commission" Type="money" />
+          <Property Name="IsDraw" Type="bit" />
+          <Property Name="DetalleApuesta" Type="nvarchar(max)" />
+          <Property Name="FolioVenta" Type="varchar" MaxLength="25" />
+          <Property Name="FolioPago" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PLETote.dbo.vTickets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vTickets">
+          <Key>
+            <PropertyRef Name="TicketNumber" />
+            <PropertyRef Name="LocationId" />
+            <PropertyRef Name="ToteId" />
+            <PropertyRef Name="ETSN" />
+          </Key>
+          <Property Name="TicketNumber" Type="bigint" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="ToteId" Type="int" Nullable="false" />
+          <Property Name="ETSN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TicketType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TicketStatus" Type="tinyint" Nullable="false" />
+          <Property Name="SoldDate" Type="datetime" Nullable="false" />
+          <Property Name="SoldOpDate" Type="datetime" />
+          <Property Name="SettledDate" Type="datetime" />
+          <Property Name="SettledOpDate" Type="datetime" />
+          <Property Name="CashedDate" Type="datetime" />
+          <Property Name="CashedOpDate" Type="datetime" />
+          <Property Name="VoidedDate" Type="datetime" />
+          <Property Name="VoidedOpDate" Type="datetime" />
+          <Property Name="ExpiredDate" Type="datetime" />
+          <Property Name="ExpiredOpDate" Type="datetime" />
+          <Property Name="SoldTillSessionId" Type="int" />
+          <Property Name="SoldValue" Type="money" Nullable="false" />
+          <Property Name="SoldValue_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="CommissionValue" Type="money" />
+          <Property Name="BetTaxRate" Type="decimal" Precision="5" Scale="3" />
+          <Property Name="BetTaxValue" Type="money" />
+          <Property Name="BetTaxValue_Es" Type="decimal" Precision="24" Scale="6" />
+          <Property Name="CashedTillSessionId" Type="int" />
+          <Property Name="SettledValue" Type="money" />
+          <Property Name="SettledValue_Es" Type="decimal" Precision="38" Scale="11" />
+          <Property Name="RefundValue" Type="money" />
+          <Property Name="WinTaxRate" Type="decimal" Precision="5" Scale="3" />
+          <Property Name="WinTaxType" Type="char" MaxLength="1" />
+          <Property Name="WinTaxValue" Type="money" />
+          <Property Name="WinTaxValue_Es" Type="decimal" Precision="38" Scale="8" />
+          <Property Name="ExchangeRate" Type="money" />
+          <Property Name="SoldCashier" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="SoldTerminal" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CashedCashier" Type="varchar" MaxLength="75" />
+          <Property Name="CashedTerminal" Type="varchar" MaxLength="50" />
+          <Property Name="InfraestructureUse" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="IsDraw" Type="bit" />
+          <Property Name="WagerType" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FolioVenta" Type="varchar" MaxLength="25" />
+          <Property Name="FolioPago" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <Association Name="FK_BettorROVReportBreaks_Bettors">
+          <End Role="Bettors" Type="Self.Bettors" Multiplicity="1" />
+          <End Role="BettorROVReportBreaks" Type="Self.BettorROVReportBreaks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bettors">
+              <PropertyRef Name="BettorId" />
+            </Principal>
+            <Dependent Role="BettorROVReportBreaks">
+              <PropertyRef Name="BettorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BettorROVReportBreaks_ROVReports">
+          <End Role="ROVReports" Type="Self.ROVReports" Multiplicity="1" />
+          <End Role="BettorROVReportBreaks" Type="Self.BettorROVReportBreaks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROVReports">
+              <PropertyRef Name="ROVReportId" />
+            </Principal>
+            <Dependent Role="BettorROVReportBreaks">
+              <PropertyRef Name="ROVReportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BettorTickets_Bettors">
+          <End Role="Bettors" Type="Self.Bettors" Multiplicity="1" />
+          <End Role="BettorTickets" Type="Self.BettorTickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bettors">
+              <PropertyRef Name="BettorId" />
+            </Principal>
+            <Dependent Role="BettorTickets">
+              <PropertyRef Name="BettorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BettorTickets_Locations">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <End Role="BettorTickets" Type="Self.BettorTickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationId" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="BettorTickets">
+              <PropertyRef Name="LocationId" />
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BettorTickets_Tickets">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="0..1" />
+          <End Role="BettorTickets" Type="Self.BettorTickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="BettorTickets">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CertifiedTickets_Tickets1">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+          <End Role="TicketProperties" Type="Self.TicketProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="TicketProperties">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Locations">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <End Role="Locations1" Type="Self.Locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationId" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="Locations1">
+              <PropertyRef Name="FormalLocationId" />
+              <PropertyRef Name="FormalToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Totes">
+          <End Role="Totes" Type="Self.Totes" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Totes">
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Locations1">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationId" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="LocationId" />
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Totes">
+          <End Role="Totes" Type="Self.Totes" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Totes">
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWager_Tickets1">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+          <End Role="TicketWager" Type="Self.TicketWager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="TicketWager">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PLEToteModelStoreContainer">
+          <EntitySet Name="BettorROVReportBreaks" EntityType="Self.BettorROVReportBreaks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bettors" EntityType="Self.Bettors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BettorTickets" EntityType="Self.BettorTickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROVReports" EntityType="Self.ROVReports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Taxes" EntityType="Self.Taxes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TicketProperties" EntityType="Self.TicketProperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TicketWager" EntityType="Self.TicketWager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Totes" EntityType="Self.Totes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vReportTaxes" EntityType="Self.vReportTaxes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vReportTaxes].[TicketNumber] AS [TicketNumber], 
+    [vReportTaxes].[TicketType] AS [TicketType], 
+    [vReportTaxes].[TaxId] AS [TaxId], 
+    [vReportTaxes].[TaxName] AS [TaxName], 
+    [vReportTaxes].[LocationId] AS [LocationId], 
+    [vReportTaxes].[LocationName] AS [LocationName], 
+    [vReportTaxes].[ToteId] AS [ToteId], 
+    [vReportTaxes].[TicketStatus] AS [TicketStatus], 
+    [vReportTaxes].[ETSN] AS [ETSN], 
+    [vReportTaxes].[TerminalCashed] AS [TerminalCashed], 
+    [vReportTaxes].[CashedDate] AS [CashedDate], 
+    [vReportTaxes].[CashedDateOp] AS [CashedDateOp], 
+    [vReportTaxes].[SoldValue] AS [SoldValue], 
+    [vReportTaxes].[SoldValue_Es] AS [SoldValue_Es], 
+    [vReportTaxes].[TicketWin] AS [TicketWin], 
+    [vReportTaxes].[TicketWin_Es] AS [TicketWin_Es], 
+    [vReportTaxes].[PayoutValue] AS [PayoutValue], 
+    [vReportTaxes].[PayoutValue_Es] AS [PayoutValue_Es], 
+    [vReportTaxes].[RefundValue] AS [RefundValue], 
+    [vReportTaxes].[RefundValue_Es] AS [RefundValue_Es], 
+    [vReportTaxes].[TaxRate] AS [TaxRate], 
+    [vReportTaxes].[TaxValue] AS [TaxValue], 
+    [vReportTaxes].[TaxValue_Es] AS [TaxValue_Es], 
+    [vReportTaxes].[ExchangeRate] AS [ExchangeRate], 
+    [vReportTaxes].[Estrategia] AS [Estrategia]
+    FROM [dbo].[vReportTaxes] AS [vReportTaxes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vReportTickets" EntityType="Self.vReportTickets" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vReportTickets].[TicketNumber] AS [TicketNumber], 
+    [vReportTickets].[LocationId] AS [LocationId], 
+    [vReportTickets].[ToteId] AS [ToteId], 
+    [vReportTickets].[TerminalSold] AS [TerminalSold], 
+    [vReportTickets].[TerminalCashed] AS [TerminalCashed], 
+    [vReportTickets].[LocationName] AS [LocationName], 
+    [vReportTickets].[TicketType] AS [TicketType], 
+    [vReportTickets].[ETSN] AS [ETSN], 
+    [vReportTickets].[DateSold] AS [DateSold], 
+    [vReportTickets].[DateSoldOp] AS [DateSoldOp], 
+    [vReportTickets].[DatePaid] AS [DatePaid], 
+    [vReportTickets].[DatePaidOp] AS [DatePaidOp], 
+    [vReportTickets].[DateSettled] AS [DateSettled], 
+    [vReportTickets].[DateSettledOp] AS [DateSettledOp], 
+    [vReportTickets].[DateExpired] AS [DateExpired], 
+    [vReportTickets].[DateExpiredOp] AS [DateExpiredOp], 
+    [vReportTickets].[DateVoided] AS [DateVoided], 
+    [vReportTickets].[DateVoidedOp] AS [DateVoidedOp], 
+    [vReportTickets].[TicketDescription] AS [TicketDescription], 
+    [vReportTickets].[TillSessionSold] AS [TillSessionSold], 
+    [vReportTickets].[TillSessionCashed] AS [TillSessionCashed], 
+    [vReportTickets].[Estrategia] AS [Estrategia], 
+    [vReportTickets].[TicketStatus] AS [TicketStatus], 
+    [vReportTickets].[WriteTake] AS [WriteTake], 
+    [vReportTickets].[WriteTake_Es] AS [WriteTake_Es], 
+    [vReportTickets].[Refund] AS [Refund], 
+    [vReportTickets].[Refund_Es] AS [Refund_Es], 
+    [vReportTickets].[CreditsRefund] AS [CreditsRefund], 
+    [vReportTickets].[CreditsRefund_Es] AS [CreditsRefund_Es], 
+    [vReportTickets].[Win] AS [Win], 
+    [vReportTickets].[Win_Es] AS [Win_Es], 
+    [vReportTickets].[CreditsWin] AS [CreditsWin], 
+    [vReportTickets].[CreditsWin_Es] AS [CreditsWin_Es], 
+    [vReportTickets].[Payout] AS [Payout], 
+    [vReportTickets].[Payout_Es] AS [Payout_Es], 
+    [vReportTickets].[RefundUnpaid] AS [RefundUnpaid], 
+    [vReportTickets].[RefundUnpaid_Es] AS [RefundUnpaid_Es], 
+    [vReportTickets].[CreditsRefundUnpaid] AS [CreditsRefundUnpaid], 
+    [vReportTickets].[CreditsRefundUnpaid_Es] AS [CreditsRefundUnpaid_Es], 
+    [vReportTickets].[WinUnpaid] AS [WinUnpaid], 
+    [vReportTickets].[WinUnpaid_Es] AS [WinUnpaid_Es], 
+    [vReportTickets].[CreditsWinUnpaid] AS [CreditsWinUnpaid], 
+    [vReportTickets].[CreditsWinUnpaid_Es] AS [CreditsWinUnpaid_Es], 
+    [vReportTickets].[PayoutUnpaid] AS [PayoutUnpaid], 
+    [vReportTickets].[PayoutUnpaid_Es] AS [PayoutUnpaid_Es], 
+    [vReportTickets].[Payoff] AS [Payoff], 
+    [vReportTickets].[Payoff_Es] AS [Payoff_Es], 
+    [vReportTickets].[TaxRate] AS [TaxRate], 
+    [vReportTickets].[SoldValue] AS [SoldValue], 
+    [vReportTickets].[SoldValue_ES] AS [SoldValue_ES], 
+    [vReportTickets].[CashedValue] AS [CashedValue], 
+    [vReportTickets].[CashedValue_Es] AS [CashedValue_Es], 
+    [vReportTickets].[SettledValue] AS [SettledValue], 
+    [vReportTickets].[SettledValue_Es] AS [SettledValue_Es], 
+    [vReportTickets].[RefundValue] AS [RefundValue], 
+    [vReportTickets].[RefundValue_Es] AS [RefundValue_Es], 
+    [vReportTickets].[ExchangeRate] AS [ExchangeRate], 
+    [vReportTickets].[TaxBet] AS [TaxBet], 
+    [vReportTickets].[TaxBet_Es] AS [TaxBet_Es], 
+    [vReportTickets].[TaxWin] AS [TaxWin], 
+    [vReportTickets].[TaxWin_Es] AS [TaxWin_Es], 
+    [vReportTickets].[TaxId] AS [TaxId], 
+    [vReportTickets].[WinTaxId] AS [WinTaxId], 
+    [vReportTickets].[BetTaxId] AS [BetTaxId], 
+    [vReportTickets].[Commission] AS [Commission], 
+    [vReportTickets].[IsDraw] AS [IsDraw], 
+    [vReportTickets].[DetalleApuesta] AS [DetalleApuesta], 
+    [vReportTickets].[FolioVenta] AS [FolioVenta], 
+    [vReportTickets].[FolioPago] AS [FolioPago]
+    FROM [dbo].[vReportTickets] AS [vReportTickets]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vTickets" EntityType="Self.vTickets" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vTickets].[TicketNumber] AS [TicketNumber], 
+    [vTickets].[LocationId] AS [LocationId], 
+    [vTickets].[ToteId] AS [ToteId], 
+    [vTickets].[ETSN] AS [ETSN], 
+    [vTickets].[TicketType] AS [TicketType], 
+    [vTickets].[TicketStatus] AS [TicketStatus], 
+    [vTickets].[SoldDate] AS [SoldDate], 
+    [vTickets].[SoldOpDate] AS [SoldOpDate], 
+    [vTickets].[SettledDate] AS [SettledDate], 
+    [vTickets].[SettledOpDate] AS [SettledOpDate], 
+    [vTickets].[CashedDate] AS [CashedDate], 
+    [vTickets].[CashedOpDate] AS [CashedOpDate], 
+    [vTickets].[VoidedDate] AS [VoidedDate], 
+    [vTickets].[VoidedOpDate] AS [VoidedOpDate], 
+    [vTickets].[ExpiredDate] AS [ExpiredDate], 
+    [vTickets].[ExpiredOpDate] AS [ExpiredOpDate], 
+    [vTickets].[SoldTillSessionId] AS [SoldTillSessionId], 
+    [vTickets].[SoldValue] AS [SoldValue], 
+    [vTickets].[SoldValue_Es] AS [SoldValue_Es], 
+    [vTickets].[CommissionValue] AS [CommissionValue], 
+    [vTickets].[BetTaxRate] AS [BetTaxRate], 
+    [vTickets].[BetTaxValue] AS [BetTaxValue], 
+    [vTickets].[BetTaxValue_Es] AS [BetTaxValue_Es], 
+    [vTickets].[CashedTillSessionId] AS [CashedTillSessionId], 
+    [vTickets].[SettledValue] AS [SettledValue], 
+    [vTickets].[SettledValue_Es] AS [SettledValue_Es], 
+    [vTickets].[RefundValue] AS [RefundValue], 
+    [vTickets].[WinTaxRate] AS [WinTaxRate], 
+    [vTickets].[WinTaxType] AS [WinTaxType], 
+    [vTickets].[WinTaxValue] AS [WinTaxValue], 
+    [vTickets].[WinTaxValue_Es] AS [WinTaxValue_Es], 
+    [vTickets].[ExchangeRate] AS [ExchangeRate], 
+    [vTickets].[SoldCashier] AS [SoldCashier], 
+    [vTickets].[SoldTerminal] AS [SoldTerminal], 
+    [vTickets].[CashedCashier] AS [CashedCashier], 
+    [vTickets].[CashedTerminal] AS [CashedTerminal], 
+    [vTickets].[InfraestructureUse] AS [InfraestructureUse], 
+    [vTickets].[IsDraw] AS [IsDraw], 
+    [vTickets].[WagerType] AS [WagerType], 
+    [vTickets].[FolioVenta] AS [FolioVenta], 
+    [vTickets].[FolioPago] AS [FolioPago]
+    FROM [dbo].[vTickets] AS [vTickets]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BettorROVReportBreaks_Bettors" Association="Self.FK_BettorROVReportBreaks_Bettors">
+            <End Role="Bettors" EntitySet="Bettors" />
+            <End Role="BettorROVReportBreaks" EntitySet="BettorROVReportBreaks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BettorROVReportBreaks_ROVReports" Association="Self.FK_BettorROVReportBreaks_ROVReports">
+            <End Role="ROVReports" EntitySet="ROVReports" />
+            <End Role="BettorROVReportBreaks" EntitySet="BettorROVReportBreaks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BettorTickets_Bettors" Association="Self.FK_BettorTickets_Bettors">
+            <End Role="Bettors" EntitySet="Bettors" />
+            <End Role="BettorTickets" EntitySet="BettorTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BettorTickets_Locations" Association="Self.FK_BettorTickets_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="BettorTickets" EntitySet="BettorTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BettorTickets_Tickets" Association="Self.FK_BettorTickets_Tickets">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="BettorTickets" EntitySet="BettorTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CertifiedTickets_Tickets1" Association="Self.FK_CertifiedTickets_Tickets1">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="TicketProperties" EntitySet="TicketProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Locations" Association="Self.FK_Locations_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Locations1" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Totes" Association="Self.FK_Locations_Totes">
+            <End Role="Totes" EntitySet="Totes" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Locations1" Association="Self.FK_Tickets_Locations1">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Totes" Association="Self.FK_Tickets_Totes">
+            <End Role="Totes" EntitySet="Totes" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWager_Tickets1" Association="Self.FK_TicketWager_Tickets1">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="TicketWager" EntitySet="TicketWager" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PLEToteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BettorROVReportBreaks">
+          <Key>
+            <PropertyRef Name="BettorId" />
+            <PropertyRef Name="ROVReportId" />
+            <PropertyRef Name="BreakDate" />
+          </Key>
+          <Property Name="BettorId" Type="Int32" Nullable="false" />
+          <Property Name="ROVReportId" Type="Int32" Nullable="false" />
+          <Property Name="ReportedAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BreakDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Bettors" Relationship="Self.FK_BettorROVReportBreaks_Bettors" FromRole="BettorROVReportBreaks" ToRole="Bettors" />
+          <NavigationProperty Name="ROVReports" Relationship="Self.FK_BettorROVReportBreaks_ROVReports" FromRole="BettorROVReportBreaks" ToRole="ROVReports" />
+        </EntityType>
+        <EntityType Name="Bettors">
+          <Key>
+            <PropertyRef Name="BettorId" />
+          </Key>
+          <Property Name="BettorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BettorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BettorLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BettorMotherMaidenName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BettorBirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BettorNativeCountry" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BettorNativeCountryDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BettorNationality" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="BettorNationalityDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BettorGender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BettorRFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="BettorCURP" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="BettorEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BettorPhoneCode" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="BettorPhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="BettorActivity" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BettorActivityDesc" Type="String" MaxLength="180" FixedLength="false" Unicode="false" />
+          <Property Name="IsVIP" Type="Boolean" Nullable="false" />
+          <Property Name="IsPersonaFisica" Type="Boolean" Nullable="false" />
+          <Property Name="IsForeigner" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IdNumber" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdType" Type="Int32" Nullable="false" />
+          <Property Name="IdTypeDesc" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdIssuingAuthority" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAddressNumber" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAddressInternalNumber" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="IdColonia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAddressCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAddressState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAddressZipCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAddressResidenceCountry" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAddressResidenceCountryDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdOther" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IdValidUntil" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RegisteredOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="BettorIdBeneficiario" Type="Int32" />
+          <Property Name="AlertaClave" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="AlertaDescripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BettorROVReportBreaks" Relationship="Self.FK_BettorROVReportBreaks_Bettors" FromRole="Bettors" ToRole="BettorROVReportBreaks" />
+          <NavigationProperty Name="BettorTickets" Relationship="Self.FK_BettorTickets_Bettors" FromRole="Bettors" ToRole="BettorTickets" />
+        </EntityType>
+        <EntityType Name="BettorTickets">
+          <Key>
+            <PropertyRef Name="ToteId" />
+            <PropertyRef Name="BettorType" />
+            <PropertyRef Name="ETSN" />
+          </Key>
+          <Property Name="TicketNumber" Type="Int64" />
+          <Property Name="ToteId" Type="Int32" Nullable="false" />
+          <Property Name="BettorType" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="BettorId" Type="Int32" Nullable="false" />
+          <Property Name="ETSN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RealAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ReportedAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OpDate" Type="DateTime" Precision="3" />
+          <Property Name="InstrumentoMonetario" Type="Int32" Nullable="false" />
+          <Property Name="InstrumentoMonetarioDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ChequeInstitucion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChequeNoCuenta" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="ChequeNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SpeiClaveRastreo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TeftFolio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RegisteredOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RegisteredBy" Type="Int32" />
+          <NavigationProperty Name="Bettors" Relationship="Self.FK_BettorTickets_Bettors" FromRole="BettorTickets" ToRole="Bettors" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK_BettorTickets_Locations" FromRole="BettorTickets" ToRole="Locations" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_BettorTickets_Tickets" FromRole="BettorTickets" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="LocationId" />
+            <PropertyRef Name="ToteId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="ToteId" Type="Int32" Nullable="false" />
+          <Property Name="IsFormalLocation" Type="Boolean" Nullable="false" />
+          <Property Name="FormalLocationId" Type="Int32" />
+          <Property Name="FormalToteId" Type="Int32" />
+          <Property Name="LocationName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LocationAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LocationEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LocationGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseeOperatorId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseeOperatorName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseeId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseeName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="InfraestructureUse" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="LicenseeOperatorEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TicketValidity" Type="Byte" Nullable="false" />
+          <Property Name="VoucherValidity" Type="Byte" Nullable="false" />
+          <Property Name="DefaultCurrency" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ExchangeRate" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="BetTaxRate" Type="Decimal" Precision="6" Scale="4" />
+          <Property Name="RaceWinTaxBase" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="SportWinTaxBase" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="WinTaxRate" Type="Decimal" Precision="6" Scale="4" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LocationZipCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RepresenterName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RepresenterRfc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RepresenterCurp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BettorTickets" Relationship="Self.FK_BettorTickets_Locations" FromRole="Locations" ToRole="BettorTickets" />
+          <NavigationProperty Name="Locations1" Relationship="Self.FK_Locations_Locations" FromRole="Locations" ToRole="Locations1" />
+          <NavigationProperty Name="Locations2" Relationship="Self.FK_Locations_Locations" FromRole="Locations1" ToRole="Locations" />
+          <NavigationProperty Name="Totes" Relationship="Self.FK_Locations_Totes" FromRole="Locations" ToRole="Totes" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Locations1" FromRole="Locations" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="ROVReports">
+          <Key>
+            <PropertyRef Name="ROVReportId" />
+          </Key>
+          <Property Name="ROVReportId" Type="Int32" Nullable="false" />
+          <Property Name="ReportDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OutputFormat" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="IncludeSold" Type="Boolean" Nullable="false" />
+          <Property Name="AmountSoldLimit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IncludeCashed" Type="Boolean" Nullable="false" />
+          <Property Name="AmountCashedLimit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IncludeIndividualTickets" Type="Boolean" Nullable="false" />
+          <Property Name="IncludeAccumulativeTickets" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BettorROVReportBreaks" Relationship="Self.FK_BettorROVReportBreaks_ROVReports" FromRole="ROVReports" ToRole="BettorROVReportBreaks" />
+        </EntityType>
+        <EntityType Name="Taxes">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="Int32" Nullable="false" />
+          <Property Name="TaxName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TaxType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AppliesTo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BaseField" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TaxRate" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="InsertedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TicketProperties">
+          <Key>
+            <PropertyRef Name="ToteId" />
+            <PropertyRef Name="TicketNumber" />
+            <PropertyRef Name="Property" />
+          </Key>
+          <Property Name="ToteId" Type="Int32" Nullable="false" />
+          <Property Name="TicketNumber" Type="Int64" Nullable="false" />
+          <Property Name="Property" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegisteredOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PropertyValue" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_CertifiedTickets_Tickets1" FromRole="TicketProperties" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="TicketNumber" />
+            <PropertyRef Name="ToteId" />
+          </Key>
+          <Property Name="TicketNumber" Type="Int64" Nullable="false" />
+          <Property Name="ToteId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="ETSN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TicketType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TicketStatus" Type="Byte" Nullable="false" />
+          <Property Name="SoldDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SoldValue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="WinValue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CommissionValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BetTaxValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SettledDate" Type="DateTime" Precision="3" />
+          <Property Name="SettledValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RefundValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CashedDate" Type="DateTime" Precision="3" />
+          <Property Name="CashedValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="WinTaxValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ExchangeRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LastEvent" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SoldTillSessionId" Type="Int32" />
+          <Property Name="SoldCashier" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="SoldTerminal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CashedTillSessionId" Type="Int32" />
+          <Property Name="CashedCashier" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="CashedTerminal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OriginalVoucherId" Type="Int32" />
+          <Property Name="NumberOfDetails" Type="Byte" Nullable="false" />
+          <Property Name="WagerType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BettorTickets" Relationship="Self.FK_BettorTickets_Tickets" FromRole="Tickets" ToRole="BettorTickets" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK_Tickets_Locations1" FromRole="Tickets" ToRole="Locations" />
+          <NavigationProperty Name="TicketProperties" Relationship="Self.FK_CertifiedTickets_Tickets1" FromRole="Tickets" ToRole="TicketProperties" />
+          <NavigationProperty Name="Totes" Relationship="Self.FK_Tickets_Totes" FromRole="Tickets" ToRole="Totes" />
+          <NavigationProperty Name="TicketWager" Relationship="Self.FK_TicketWager_Tickets1" FromRole="Tickets" ToRole="TicketWager" />
+        </EntityType>
+        <EntityType Name="TicketWager">
+          <Key>
+            <PropertyRef Name="TicketWagerId" />
+          </Key>
+          <Property Name="TicketWagerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketNumber" Type="Int64" Nullable="false" />
+          <Property Name="ToteId" Type="Int32" Nullable="false" />
+          <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WagerHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WagerDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WagerExtraInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WagerSource" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_TicketWager_Tickets1" FromRole="TicketWager" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Totes">
+          <Key>
+            <PropertyRef Name="ToteId" />
+          </Key>
+          <Property Name="ToteId" Type="Int32" Nullable="false" />
+          <Property Name="ToteName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DailyRecapReports" Type="Boolean" Nullable="false" />
+          <Property Name="ReportingStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PSADataExport" Type="Boolean" Nullable="false" />
+          <Property Name="PreventMoneyLaundry" Type="Boolean" Nullable="false" />
+          <Property Name="TicketRePrint" Type="Boolean" />
+          <Property Name="HasSports" Type="Boolean" Nullable="false" />
+          <Property Name="HasRaces" Type="Boolean" Nullable="false" />
+          <Property Name="HasSelfService" Type="Boolean" Nullable="false" />
+          <Property Name="AdminLocations" Type="Boolean" Nullable="false" />
+          <Property Name="LocalStored" Type="Boolean" Nullable="false" />
+          <Property Name="WinBase" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AuthorizationRoleId" Type="Int32" Nullable="false" />
+          <Property Name="ETSNLength" Type="Int32" Nullable="false" />
+          <Property Name="IsETSNNumeric" Type="Boolean" Nullable="false" />
+          <Property Name="IsTicketNumberSensible" Type="Boolean" Nullable="false" />
+          <Property Name="HourAdjustment" Type="Int16" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Totes" FromRole="Totes" ToRole="Locations" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Totes" FromRole="Totes" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="vReportTaxes">
+          <Key>
+            <PropertyRef Name="TicketNumber" />
+            <PropertyRef Name="LocationId" />
+            <PropertyRef Name="ToteId" />
+            <PropertyRef Name="ETSN" />
+          </Key>
+          <Property Name="TicketNumber" Type="Int64" Nullable="false" />
+          <Property Name="TicketType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TaxId" Type="Int32" />
+          <Property Name="TaxName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="LocationName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ToteId" Type="Int32" Nullable="false" />
+          <Property Name="TicketStatus" Type="Byte" Nullable="false" />
+          <Property Name="ETSN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TerminalCashed" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CashedDate" Type="DateTime" Precision="3" />
+          <Property Name="CashedDateOp" Type="DateTime" Precision="3" />
+          <Property Name="SoldValue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SoldValue_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="TicketWin" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TicketWin_Es" Type="Decimal" Precision="38" Scale="11" />
+          <Property Name="PayoutValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PayoutValue_Es" Type="Decimal" Precision="38" Scale="11" />
+          <Property Name="RefundValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RefundValue_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="TaxRate" Type="Decimal" Precision="5" Scale="3" />
+          <Property Name="TaxValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxValue_Es" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="ExchangeRate" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Estrategia" Type="Decimal" Precision="3" Scale="2" />
+        </EntityType>
+        <EntityType Name="vReportTickets">
+          <Key>
+            <PropertyRef Name="TicketNumber" />
+            <PropertyRef Name="LocationId" />
+            <PropertyRef Name="ToteId" />
+            <PropertyRef Name="ETSN" />
+          </Key>
+          <Property Name="TicketNumber" Type="Int64" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="ToteId" Type="Int32" Nullable="false" />
+          <Property Name="TerminalSold" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TerminalCashed" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LocationName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TicketType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ETSN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateSold" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateSoldOp" Type="DateTime" Precision="3" />
+          <Property Name="DatePaid" Type="DateTime" Precision="3" />
+          <Property Name="DatePaidOp" Type="DateTime" Precision="3" />
+          <Property Name="DateSettled" Type="DateTime" Precision="3" />
+          <Property Name="DateSettledOp" Type="DateTime" Precision="3" />
+          <Property Name="DateExpired" Type="DateTime" Precision="3" />
+          <Property Name="DateExpiredOp" Type="DateTime" Precision="3" />
+          <Property Name="DateVoided" Type="DateTime" Precision="3" />
+          <Property Name="DateVoidedOp" Type="DateTime" Precision="3" />
+          <Property Name="TicketDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TillSessionSold" Type="Int32" />
+          <Property Name="TillSessionCashed" Type="Int32" />
+          <Property Name="Estrategia" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="TicketStatus" Type="Byte" Nullable="false" />
+          <Property Name="WriteTake" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="WriteTake_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="Refund" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Refund_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="CreditsRefund" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreditsRefund_Es" Type="Decimal" Precision="25" Scale="6" />
+          <Property Name="Win" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Win_Es" Type="Decimal" Precision="38" Scale="11" />
+          <Property Name="CreditsWin" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreditsWin_Es" Type="Decimal" Precision="25" Scale="6" />
+          <Property Name="Payout" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Payout_Es" Type="Decimal" Precision="38" Scale="11" />
+          <Property Name="RefundUnpaid" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RefundUnpaid_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="CreditsRefundUnpaid" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreditsRefundUnpaid_Es" Type="Decimal" Precision="25" Scale="6" />
+          <Property Name="WinUnpaid" Type="Decimal" Precision="38" Scale="10" />
+          <Property Name="WinUnpaid_Es" Type="Decimal" Precision="38" Scale="10" />
+          <Property Name="CreditsWinUnpaid" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreditsWinUnpaid_Es" Type="Decimal" Precision="25" Scale="6" />
+          <Property Name="PayoutUnpaid" Type="Decimal" Precision="38" Scale="10" />
+          <Property Name="PayoutUnpaid_Es" Type="Decimal" Precision="38" Scale="10" />
+          <Property Name="Payoff" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Payoff_Es" Type="Decimal" Precision="38" Scale="11" />
+          <Property Name="TaxRate" Type="Decimal" Precision="5" Scale="3" />
+          <Property Name="SoldValue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SoldValue_ES" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="CashedValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CashedValue_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="SettledValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SettledValue_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="RefundValue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="RefundValue_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="ExchangeRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxBet" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxBet_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="TaxWin" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxWin_Es" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="TaxId" Type="Int32" />
+          <Property Name="WinTaxId" Type="Int32" />
+          <Property Name="BetTaxId" Type="Int32" />
+          <Property Name="Commission" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsDraw" Type="Boolean" />
+          <Property Name="DetalleApuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FolioVenta" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FolioPago" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vTickets">
+          <Key>
+            <PropertyRef Name="TicketNumber" />
+            <PropertyRef Name="LocationId" />
+            <PropertyRef Name="ToteId" />
+            <PropertyRef Name="ETSN" />
+          </Key>
+          <Property Name="TicketNumber" Type="Int64" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="ToteId" Type="Int32" Nullable="false" />
+          <Property Name="ETSN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TicketType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TicketStatus" Type="Byte" Nullable="false" />
+          <Property Name="SoldDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SoldOpDate" Type="DateTime" Precision="3" />
+          <Property Name="SettledDate" Type="DateTime" Precision="3" />
+          <Property Name="SettledOpDate" Type="DateTime" Precision="3" />
+          <Property Name="CashedDate" Type="DateTime" Precision="3" />
+          <Property Name="CashedOpDate" Type="DateTime" Precision="3" />
+          <Property Name="VoidedDate" Type="DateTime" Precision="3" />
+          <Property Name="VoidedOpDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpiredDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpiredOpDate" Type="DateTime" Precision="3" />
+          <Property Name="SoldTillSessionId" Type="Int32" />
+          <Property Name="SoldValue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SoldValue_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="CommissionValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BetTaxRate" Type="Decimal" Precision="5" Scale="3" />
+          <Property Name="BetTaxValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BetTaxValue_Es" Type="Decimal" Precision="24" Scale="6" />
+          <Property Name="CashedTillSessionId" Type="Int32" />
+          <Property Name="SettledValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SettledValue_Es" Type="Decimal" Precision="38" Scale="11" />
+          <Property Name="RefundValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="WinTaxRate" Type="Decimal" Precision="5" Scale="3" />
+          <Property Name="WinTaxType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="WinTaxValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="WinTaxValue_Es" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="ExchangeRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SoldCashier" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SoldTerminal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CashedCashier" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="CashedTerminal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InfraestructureUse" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="IsDraw" Type="Boolean" />
+          <Property Name="WagerType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FolioVenta" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FolioPago" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_BettorROVReportBreaks_Bettors">
+          <End Role="Bettors" Type="Self.Bettors" Multiplicity="1" />
+          <End Role="BettorROVReportBreaks" Type="Self.BettorROVReportBreaks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bettors">
+              <PropertyRef Name="BettorId" />
+            </Principal>
+            <Dependent Role="BettorROVReportBreaks">
+              <PropertyRef Name="BettorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BettorROVReportBreaks_ROVReports">
+          <End Role="ROVReports" Type="Self.ROVReports" Multiplicity="1" />
+          <End Role="BettorROVReportBreaks" Type="Self.BettorROVReportBreaks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROVReports">
+              <PropertyRef Name="ROVReportId" />
+            </Principal>
+            <Dependent Role="BettorROVReportBreaks">
+              <PropertyRef Name="ROVReportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BettorTickets_Bettors">
+          <End Role="Bettors" Type="Self.Bettors" Multiplicity="1" />
+          <End Role="BettorTickets" Type="Self.BettorTickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bettors">
+              <PropertyRef Name="BettorId" />
+            </Principal>
+            <Dependent Role="BettorTickets">
+              <PropertyRef Name="BettorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BettorTickets_Locations">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <End Role="BettorTickets" Type="Self.BettorTickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationId" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="BettorTickets">
+              <PropertyRef Name="LocationId" />
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BettorTickets_Tickets">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="0..1" />
+          <End Role="BettorTickets" Type="Self.BettorTickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="BettorTickets">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Locations">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <End Role="Locations1" Type="Self.Locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationId" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="Locations1">
+              <PropertyRef Name="FormalLocationId" />
+              <PropertyRef Name="FormalToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Totes">
+          <End Role="Totes" Type="Self.Totes" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Totes">
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Locations1">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationId" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="LocationId" />
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CertifiedTickets_Tickets1">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+          <End Role="TicketProperties" Type="Self.TicketProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="TicketProperties">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Totes">
+          <End Role="Totes" Type="Self.Totes" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Totes">
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWager_Tickets1">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+          <End Role="TicketWager" Type="Self.TicketWager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Principal>
+            <Dependent Role="TicketWager">
+              <PropertyRef Name="TicketNumber" />
+              <PropertyRef Name="ToteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PLEToteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BettorROVReportBreaks" EntityType="Self.BettorROVReportBreaks" />
+          <EntitySet Name="Bettors" EntityType="Self.Bettors" />
+          <EntitySet Name="BettorTickets" EntityType="Self.BettorTickets" />
+          <EntitySet Name="Locations" EntityType="Self.Locations" />
+          <EntitySet Name="ROVReports" EntityType="Self.ROVReports" />
+          <EntitySet Name="Taxes" EntityType="Self.Taxes" />
+          <EntitySet Name="TicketProperties" EntityType="Self.TicketProperties" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" />
+          <EntitySet Name="TicketWager" EntityType="Self.TicketWager" />
+          <EntitySet Name="Totes" EntityType="Self.Totes" />
+          <EntitySet Name="vReportTaxes" EntityType="Self.vReportTaxes" />
+          <EntitySet Name="vReportTickets" EntityType="Self.vReportTickets" />
+          <EntitySet Name="vTickets" EntityType="Self.vTickets" />
+          <AssociationSet Name="FK_BettorROVReportBreaks_Bettors" Association="Self.FK_BettorROVReportBreaks_Bettors">
+            <End Role="Bettors" EntitySet="Bettors" />
+            <End Role="BettorROVReportBreaks" EntitySet="BettorROVReportBreaks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BettorROVReportBreaks_ROVReports" Association="Self.FK_BettorROVReportBreaks_ROVReports">
+            <End Role="ROVReports" EntitySet="ROVReports" />
+            <End Role="BettorROVReportBreaks" EntitySet="BettorROVReportBreaks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BettorTickets_Bettors" Association="Self.FK_BettorTickets_Bettors">
+            <End Role="Bettors" EntitySet="Bettors" />
+            <End Role="BettorTickets" EntitySet="BettorTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BettorTickets_Locations" Association="Self.FK_BettorTickets_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="BettorTickets" EntitySet="BettorTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BettorTickets_Tickets" Association="Self.FK_BettorTickets_Tickets">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="BettorTickets" EntitySet="BettorTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Locations" Association="Self.FK_Locations_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Locations1" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Totes" Association="Self.FK_Locations_Totes">
+            <End Role="Totes" EntitySet="Totes" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Locations1" Association="Self.FK_Tickets_Locations1">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CertifiedTickets_Tickets1" Association="Self.FK_CertifiedTickets_Tickets1">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="TicketProperties" EntitySet="TicketProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Totes" Association="Self.FK_Tickets_Totes">
+            <End Role="Totes" EntitySet="Totes" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWager_Tickets1" Association="Self.FK_TicketWager_Tickets1">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="TicketWager" EntitySet="TicketWager" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PLEToteModelStoreContainer" CdmEntityContainer="PLEToteEntities">
+          <EntitySetMapping Name="BettorROVReportBreaks">
+            <EntityTypeMapping TypeName="PLEToteModel.BettorROVReportBreaks">
+              <MappingFragment StoreEntitySet="BettorROVReportBreaks">
+                <ScalarProperty Name="BettorId" ColumnName="BettorId" />
+                <ScalarProperty Name="ROVReportId" ColumnName="ROVReportId" />
+                <ScalarProperty Name="ReportedAmount" ColumnName="ReportedAmount" />
+                <ScalarProperty Name="BreakDate" ColumnName="BreakDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bettors">
+            <EntityTypeMapping TypeName="PLEToteModel.Bettors">
+              <MappingFragment StoreEntitySet="Bettors">
+                <ScalarProperty Name="BettorId" ColumnName="BettorId" />
+                <ScalarProperty Name="BettorName" ColumnName="BettorName" />
+                <ScalarProperty Name="BettorLastName" ColumnName="BettorLastName" />
+                <ScalarProperty Name="BettorMotherMaidenName" ColumnName="BettorMotherMaidenName" />
+                <ScalarProperty Name="BettorBirthDate" ColumnName="BettorBirthDate" />
+                <ScalarProperty Name="BettorNativeCountry" ColumnName="BettorNativeCountry" />
+                <ScalarProperty Name="BettorNativeCountryDesc" ColumnName="BettorNativeCountryDesc" />
+                <ScalarProperty Name="BettorNationality" ColumnName="BettorNationality" />
+                <ScalarProperty Name="BettorNationalityDesc" ColumnName="BettorNationalityDesc" />
+                <ScalarProperty Name="BettorGender" ColumnName="BettorGender" />
+                <ScalarProperty Name="BettorRFC" ColumnName="BettorRFC" />
+                <ScalarProperty Name="BettorCURP" ColumnName="BettorCURP" />
+                <ScalarProperty Name="BettorEmail" ColumnName="BettorEmail" />
+                <ScalarProperty Name="BettorPhoneCode" ColumnName="BettorPhoneCode" />
+                <ScalarProperty Name="BettorPhoneNumber" ColumnName="BettorPhoneNumber" />
+                <ScalarProperty Name="BettorActivity" ColumnName="BettorActivity" />
+                <ScalarProperty Name="BettorActivityDesc" ColumnName="BettorActivityDesc" />
+                <ScalarProperty Name="IsVIP" ColumnName="IsVIP" />
+                <ScalarProperty Name="IsPersonaFisica" ColumnName="IsPersonaFisica" />
+                <ScalarProperty Name="IsForeigner" ColumnName="IsForeigner" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="IdTypeDesc" ColumnName="IdTypeDesc" />
+                <ScalarProperty Name="IdIssuingAuthority" ColumnName="IdIssuingAuthority" />
+                <ScalarProperty Name="IdAddress" ColumnName="IdAddress" />
+                <ScalarProperty Name="IdAddressNumber" ColumnName="IdAddressNumber" />
+                <ScalarProperty Name="IdAddressInternalNumber" ColumnName="IdAddressInternalNumber" />
+                <ScalarProperty Name="IdColonia" ColumnName="IdColonia" />
+                <ScalarProperty Name="IdAddressCity" ColumnName="IdAddressCity" />
+                <ScalarProperty Name="IdAddressState" ColumnName="IdAddressState" />
+                <ScalarProperty Name="IdAddressZipCode" ColumnName="IdAddressZipCode" />
+                <ScalarProperty Name="IdAddressResidenceCountry" ColumnName="IdAddressResidenceCountry" />
+                <ScalarProperty Name="IdAddressResidenceCountryDesc" ColumnName="IdAddressResidenceCountryDesc" />
+                <ScalarProperty Name="IdOther" ColumnName="IdOther" />
+                <ScalarProperty Name="IdValidUntil" ColumnName="IdValidUntil" />
+                <ScalarProperty Name="RegisteredOn" ColumnName="RegisteredOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="BettorIdBeneficiario" ColumnName="BettorIdBeneficiario" />
+                <ScalarProperty Name="AlertaClave" ColumnName="AlertaClave" />
+                <ScalarProperty Name="AlertaDescripcion" ColumnName="AlertaDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BettorTickets">
+            <EntityTypeMapping TypeName="PLEToteModel.BettorTickets">
+              <MappingFragment StoreEntitySet="BettorTickets">
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="ToteId" ColumnName="ToteId" />
+                <ScalarProperty Name="BettorType" ColumnName="BettorType" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="BettorId" ColumnName="BettorId" />
+                <ScalarProperty Name="ETSN" ColumnName="ETSN" />
+                <ScalarProperty Name="RealAmount" ColumnName="RealAmount" />
+                <ScalarProperty Name="ReportedAmount" ColumnName="ReportedAmount" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="OpDate" ColumnName="OpDate" />
+                <ScalarProperty Name="InstrumentoMonetario" ColumnName="InstrumentoMonetario" />
+                <ScalarProperty Name="InstrumentoMonetarioDesc" ColumnName="InstrumentoMonetarioDesc" />
+                <ScalarProperty Name="ChequeInstitucion" ColumnName="ChequeInstitucion" />
+                <ScalarProperty Name="ChequeNoCuenta" ColumnName="ChequeNoCuenta" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="SpeiClaveRastreo" ColumnName="SpeiClaveRastreo" />
+                <ScalarProperty Name="TeftFolio" ColumnName="TeftFolio" />
+                <ScalarProperty Name="RegisteredOn" ColumnName="RegisteredOn" />
+                <ScalarProperty Name="RegisteredBy" ColumnName="RegisteredBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="PLEToteModel.Locations">
+              <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="ToteId" ColumnName="ToteId" />
+                <ScalarProperty Name="IsFormalLocation" ColumnName="IsFormalLocation" />
+                <ScalarProperty Name="FormalLocationId" ColumnName="FormalLocationId" />
+                <ScalarProperty Name="FormalToteId" ColumnName="FormalToteId" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationAddress" ColumnName="LocationAddress" />
+                <ScalarProperty Name="LocationEmail" ColumnName="LocationEmail" />
+                <ScalarProperty Name="LocationGroup" ColumnName="LocationGroup" />
+                <ScalarProperty Name="LicenseeOperatorId" ColumnName="LicenseeOperatorId" />
+                <ScalarProperty Name="LicenseeOperatorName" ColumnName="LicenseeOperatorName" />
+                <ScalarProperty Name="LicenseeId" ColumnName="LicenseeId" />
+                <ScalarProperty Name="LicenseeName" ColumnName="LicenseeName" />
+                <ScalarProperty Name="InfraestructureUse" ColumnName="InfraestructureUse" />
+                <ScalarProperty Name="LicenseeOperatorEmail" ColumnName="LicenseeOperatorEmail" />
+                <ScalarProperty Name="TicketValidity" ColumnName="TicketValidity" />
+                <ScalarProperty Name="VoucherValidity" ColumnName="VoucherValidity" />
+                <ScalarProperty Name="DefaultCurrency" ColumnName="DefaultCurrency" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="BetTaxRate" ColumnName="BetTaxRate" />
+                <ScalarProperty Name="RaceWinTaxBase" ColumnName="RaceWinTaxBase" />
+                <ScalarProperty Name="SportWinTaxBase" ColumnName="SportWinTaxBase" />
+                <ScalarProperty Name="WinTaxRate" ColumnName="WinTaxRate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LocationZipCode" ColumnName="LocationZipCode" />
+                <ScalarProperty Name="RepresenterName" ColumnName="RepresenterName" />
+                <ScalarProperty Name="RepresenterRfc" ColumnName="RepresenterRfc" />
+                <ScalarProperty Name="RepresenterCurp" ColumnName="RepresenterCurp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROVReports">
+            <EntityTypeMapping TypeName="PLEToteModel.ROVReports">
+              <MappingFragment StoreEntitySet="ROVReports">
+                <ScalarProperty Name="ROVReportId" ColumnName="ROVReportId" />
+                <ScalarProperty Name="ReportDesc" ColumnName="ReportDesc" />
+                <ScalarProperty Name="OutputFormat" ColumnName="OutputFormat" />
+                <ScalarProperty Name="CutEnabled" ColumnName="CutEnabled" />
+                <ScalarProperty Name="IncludeSold" ColumnName="IncludeSold" />
+                <ScalarProperty Name="AmountSoldLimit" ColumnName="AmountSoldLimit" />
+                <ScalarProperty Name="IncludeCashed" ColumnName="IncludeCashed" />
+                <ScalarProperty Name="AmountCashedLimit" ColumnName="AmountCashedLimit" />
+                <ScalarProperty Name="IncludeIndividualTickets" ColumnName="IncludeIndividualTickets" />
+                <ScalarProperty Name="IncludeAccumulativeTickets" ColumnName="IncludeAccumulativeTickets" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxes">
+            <EntityTypeMapping TypeName="PLEToteModel.Taxes">
+              <MappingFragment StoreEntitySet="Taxes">
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="TaxType" ColumnName="TaxType" />
+                <ScalarProperty Name="AppliesTo" ColumnName="AppliesTo" />
+                <ScalarProperty Name="BaseField" ColumnName="BaseField" />
+                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketProperties">
+            <EntityTypeMapping TypeName="PLEToteModel.TicketProperties">
+              <MappingFragment StoreEntitySet="TicketProperties">
+                <ScalarProperty Name="ToteId" ColumnName="ToteId" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="Property" ColumnName="Property" />
+                <ScalarProperty Name="RegisteredOn" ColumnName="RegisteredOn" />
+                <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="PLEToteModel.Tickets">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="ToteId" ColumnName="ToteId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="ETSN" ColumnName="ETSN" />
+                <ScalarProperty Name="TicketType" ColumnName="TicketType" />
+                <ScalarProperty Name="TicketStatus" ColumnName="TicketStatus" />
+                <ScalarProperty Name="SoldDate" ColumnName="SoldDate" />
+                <ScalarProperty Name="SoldValue" ColumnName="SoldValue" />
+                <ScalarProperty Name="WinValue" ColumnName="WinValue" />
+                <ScalarProperty Name="CommissionValue" ColumnName="CommissionValue" />
+                <ScalarProperty Name="BetTaxValue" ColumnName="BetTaxValue" />
+                <ScalarProperty Name="SettledDate" ColumnName="SettledDate" />
+                <ScalarProperty Name="SettledValue" ColumnName="SettledValue" />
+                <ScalarProperty Name="RefundValue" ColumnName="RefundValue" />
+                <ScalarProperty Name="CashedDate" ColumnName="CashedDate" />
+                <ScalarProperty Name="CashedValue" ColumnName="CashedValue" />
+                <ScalarProperty Name="WinTaxValue" ColumnName="WinTaxValue" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="LastEvent" ColumnName="LastEvent" />
+                <ScalarProperty Name="SoldTillSessionId" ColumnName="SoldTillSessionId" />
+                <ScalarProperty Name="SoldCashier" ColumnName="SoldCashier" />
+                <ScalarProperty Name="SoldTerminal" ColumnName="SoldTerminal" />
+                <ScalarProperty Name="CashedTillSessionId" ColumnName="CashedTillSessionId" />
+                <ScalarProperty Name="CashedCashier" ColumnName="CashedCashier" />
+                <ScalarProperty Name="CashedTerminal" ColumnName="CashedTerminal" />
+                <ScalarProperty Name="OriginalVoucherId" ColumnName="OriginalVoucherId" />
+                <ScalarProperty Name="NumberOfDetails" ColumnName="NumberOfDetails" />
+                <ScalarProperty Name="WagerType" ColumnName="WagerType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketWager">
+            <EntityTypeMapping TypeName="PLEToteModel.TicketWager">
+              <MappingFragment StoreEntitySet="TicketWager">
+                <ScalarProperty Name="TicketWagerId" ColumnName="TicketWagerId" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="ToteId" ColumnName="ToteId" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="WagerHeader" ColumnName="WagerHeader" />
+                <ScalarProperty Name="WagerDetail" ColumnName="WagerDetail" />
+                <ScalarProperty Name="WagerExtraInfo" ColumnName="WagerExtraInfo" />
+                <ScalarProperty Name="WagerSource" ColumnName="WagerSource" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Totes">
+            <EntityTypeMapping TypeName="PLEToteModel.Totes">
+              <MappingFragment StoreEntitySet="Totes">
+                <ScalarProperty Name="ToteId" ColumnName="ToteId" />
+                <ScalarProperty Name="ToteName" ColumnName="ToteName" />
+                <ScalarProperty Name="DailyRecapReports" ColumnName="DailyRecapReports" />
+                <ScalarProperty Name="ReportingStartDate" ColumnName="ReportingStartDate" />
+                <ScalarProperty Name="PSADataExport" ColumnName="PSADataExport" />
+                <ScalarProperty Name="PreventMoneyLaundry" ColumnName="PreventMoneyLaundry" />
+                <ScalarProperty Name="TicketRePrint" ColumnName="TicketRePrint" />
+                <ScalarProperty Name="HasSports" ColumnName="HasSports" />
+                <ScalarProperty Name="HasRaces" ColumnName="HasRaces" />
+                <ScalarProperty Name="HasSelfService" ColumnName="HasSelfService" />
+                <ScalarProperty Name="AdminLocations" ColumnName="AdminLocations" />
+                <ScalarProperty Name="LocalStored" ColumnName="LocalStored" />
+                <ScalarProperty Name="WinBase" ColumnName="WinBase" />
+                <ScalarProperty Name="AuthorizationRoleId" ColumnName="AuthorizationRoleId" />
+                <ScalarProperty Name="ETSNLength" ColumnName="ETSNLength" />
+                <ScalarProperty Name="IsETSNNumeric" ColumnName="IsETSNNumeric" />
+                <ScalarProperty Name="IsTicketNumberSensible" ColumnName="IsTicketNumberSensible" />
+                <ScalarProperty Name="HourAdjustment" ColumnName="HourAdjustment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vReportTaxes">
+            <EntityTypeMapping TypeName="PLEToteModel.vReportTaxes">
+              <MappingFragment StoreEntitySet="vReportTaxes">
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="TicketType" ColumnName="TicketType" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="ToteId" ColumnName="ToteId" />
+                <ScalarProperty Name="TicketStatus" ColumnName="TicketStatus" />
+                <ScalarProperty Name="ETSN" ColumnName="ETSN" />
+                <ScalarProperty Name="TerminalCashed" ColumnName="TerminalCashed" />
+                <ScalarProperty Name="CashedDate" ColumnName="CashedDate" />
+                <ScalarProperty Name="CashedDateOp" ColumnName="CashedDateOp" />
+                <ScalarProperty Name="SoldValue" ColumnName="SoldValue" />
+                <ScalarProperty Name="SoldValue_Es" ColumnName="SoldValue_Es" />
+                <ScalarProperty Name="TicketWin" ColumnName="TicketWin" />
+                <ScalarProperty Name="TicketWin_Es" ColumnName="TicketWin_Es" />
+                <ScalarProperty Name="PayoutValue" ColumnName="PayoutValue" />
+                <ScalarProperty Name="PayoutValue_Es" ColumnName="PayoutValue_Es" />
+                <ScalarProperty Name="RefundValue" ColumnName="RefundValue" />
+                <ScalarProperty Name="RefundValue_Es" ColumnName="RefundValue_Es" />
+                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="TaxValue_Es" ColumnName="TaxValue_Es" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="Estrategia" ColumnName="Estrategia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vReportTickets">
+            <EntityTypeMapping TypeName="PLEToteModel.vReportTickets">
+              <MappingFragment StoreEntitySet="vReportTickets">
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="ToteId" ColumnName="ToteId" />
+                <ScalarProperty Name="TerminalSold" ColumnName="TerminalSold" />
+                <ScalarProperty Name="TerminalCashed" ColumnName="TerminalCashed" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="TicketType" ColumnName="TicketType" />
+                <ScalarProperty Name="ETSN" ColumnName="ETSN" />
+                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
+                <ScalarProperty Name="DateSoldOp" ColumnName="DateSoldOp" />
+                <ScalarProperty Name="DatePaid" ColumnName="DatePaid" />
+                <ScalarProperty Name="DatePaidOp" ColumnName="DatePaidOp" />
+                <ScalarProperty Name="DateSettled" ColumnName="DateSettled" />
+                <ScalarProperty Name="DateSettledOp" ColumnName="DateSettledOp" />
+                <ScalarProperty Name="DateExpired" ColumnName="DateExpired" />
+                <ScalarProperty Name="DateExpiredOp" ColumnName="DateExpiredOp" />
+                <ScalarProperty Name="DateVoided" ColumnName="DateVoided" />
+                <ScalarProperty Name="DateVoidedOp" ColumnName="DateVoidedOp" />
+                <ScalarProperty Name="TicketDescription" ColumnName="TicketDescription" />
+                <ScalarProperty Name="TillSessionSold" ColumnName="TillSessionSold" />
+                <ScalarProperty Name="TillSessionCashed" ColumnName="TillSessionCashed" />
+                <ScalarProperty Name="Estrategia" ColumnName="Estrategia" />
+                <ScalarProperty Name="TicketStatus" ColumnName="TicketStatus" />
+                <ScalarProperty Name="WriteTake" ColumnName="WriteTake" />
+                <ScalarProperty Name="WriteTake_Es" ColumnName="WriteTake_Es" />
+                <ScalarProperty Name="Refund" ColumnName="Refund" />
+                <ScalarProperty Name="Refund_Es" ColumnName="Refund_Es" />
+                <ScalarProperty Name="CreditsRefund" ColumnName="CreditsRefund" />
+                <ScalarProperty Name="CreditsRefund_Es" ColumnName="CreditsRefund_Es" />
+                <ScalarProperty Name="Win" ColumnName="Win" />
+                <ScalarProperty Name="Win_Es" ColumnName="Win_Es" />
+                <ScalarProperty Name="CreditsWin" ColumnName="CreditsWin" />
+                <ScalarProperty Name="CreditsWin_Es" ColumnName="CreditsWin_Es" />
+                <ScalarProperty Name="Payout" ColumnName="Payout" />
+                <ScalarProperty Name="Payout_Es" ColumnName="Payout_Es" />
+                <ScalarProperty Name="RefundUnpaid" ColumnName="RefundUnpaid" />
+                <ScalarProperty Name="RefundUnpaid_Es" ColumnName="RefundUnpaid_Es" />
+                <ScalarProperty Name="CreditsRefundUnpaid" ColumnName="CreditsRefundUnpaid" />
+                <ScalarProperty Name="CreditsRefundUnpaid_Es" ColumnName="CreditsRefundUnpaid_Es" />
+                <ScalarProperty Name="WinUnpaid" ColumnName="WinUnpaid" />
+                <ScalarProperty Name="WinUnpaid_Es" ColumnName="WinUnpaid_Es" />
+                <ScalarProperty Name="CreditsWinUnpaid" ColumnName="CreditsWinUnpaid" />
+                <ScalarProperty Name="CreditsWinUnpaid_Es" ColumnName="CreditsWinUnpaid_Es" />
+                <ScalarProperty Name="PayoutUnpaid" ColumnName="PayoutUnpaid" />
+                <ScalarProperty Name="PayoutUnpaid_Es" ColumnName="PayoutUnpaid_Es" />
+                <ScalarProperty Name="Payoff" ColumnName="Payoff" />
+                <ScalarProperty Name="Payoff_Es" ColumnName="Payoff_Es" />
+                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="SoldValue" ColumnName="SoldValue" />
+                <ScalarProperty Name="SoldValue_ES" ColumnName="SoldValue_ES" />
+                <ScalarProperty Name="CashedValue" ColumnName="CashedValue" />
+                <ScalarProperty Name="CashedValue_Es" ColumnName="CashedValue_Es" />
+                <ScalarProperty Name="SettledValue" ColumnName="SettledValue" />
+                <ScalarProperty Name="SettledValue_Es" ColumnName="SettledValue_Es" />
+                <ScalarProperty Name="RefundValue" ColumnName="RefundValue" />
+                <ScalarProperty Name="RefundValue_Es" ColumnName="RefundValue_Es" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="TaxBet" ColumnName="TaxBet" />
+                <ScalarProperty Name="TaxBet_Es" ColumnName="TaxBet_Es" />
+                <ScalarProperty Name="TaxWin" ColumnName="TaxWin" />
+                <ScalarProperty Name="TaxWin_Es" ColumnName="TaxWin_Es" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="WinTaxId" ColumnName="WinTaxId" />
+                <ScalarProperty Name="BetTaxId" ColumnName="BetTaxId" />
+                <ScalarProperty Name="Commission" ColumnName="Commission" />
+                <ScalarProperty Name="IsDraw" ColumnName="IsDraw" />
+                <ScalarProperty Name="DetalleApuesta" ColumnName="DetalleApuesta" />
+                <ScalarProperty Name="FolioVenta" ColumnName="FolioVenta" />
+                <ScalarProperty Name="FolioPago" ColumnName="FolioPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vTickets">
+            <EntityTypeMapping TypeName="PLEToteModel.vTickets">
+              <MappingFragment StoreEntitySet="vTickets">
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="ToteId" ColumnName="ToteId" />
+                <ScalarProperty Name="ETSN" ColumnName="ETSN" />
+                <ScalarProperty Name="TicketType" ColumnName="TicketType" />
+                <ScalarProperty Name="TicketStatus" ColumnName="TicketStatus" />
+                <ScalarProperty Name="SoldDate" ColumnName="SoldDate" />
+                <ScalarProperty Name="SoldOpDate" ColumnName="SoldOpDate" />
+                <ScalarProperty Name="SettledDate" ColumnName="SettledDate" />
+                <ScalarProperty Name="SettledOpDate" ColumnName="SettledOpDate" />
+                <ScalarProperty Name="CashedDate" ColumnName="CashedDate" />
+                <ScalarProperty Name="CashedOpDate" ColumnName="CashedOpDate" />
+                <ScalarProperty Name="VoidedDate" ColumnName="VoidedDate" />
+                <ScalarProperty Name="VoidedOpDate" ColumnName="VoidedOpDate" />
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+                <ScalarProperty Name="ExpiredOpDate" ColumnName="ExpiredOpDate" />
+                <ScalarProperty Name="SoldTillSessionId" ColumnName="SoldTillSessionId" />
+                <ScalarProperty Name="SoldValue" ColumnName="SoldValue" />
+                <ScalarProperty Name="SoldValue_Es" ColumnName="SoldValue_Es" />
+                <ScalarProperty Name="CommissionValue" ColumnName="CommissionValue" />
+                <ScalarProperty Name="BetTaxRate" ColumnName="BetTaxRate" />
+                <ScalarProperty Name="BetTaxValue" ColumnName="BetTaxValue" />
+                <ScalarProperty Name="BetTaxValue_Es" ColumnName="BetTaxValue_Es" />
+                <ScalarProperty Name="CashedTillSessionId" ColumnName="CashedTillSessionId" />
+                <ScalarProperty Name="SettledValue" ColumnName="SettledValue" />
+                <ScalarProperty Name="SettledValue_Es" ColumnName="SettledValue_Es" />
+                <ScalarProperty Name="RefundValue" ColumnName="RefundValue" />
+                <ScalarProperty Name="WinTaxRate" ColumnName="WinTaxRate" />
+                <ScalarProperty Name="WinTaxType" ColumnName="WinTaxType" />
+                <ScalarProperty Name="WinTaxValue" ColumnName="WinTaxValue" />
+                <ScalarProperty Name="WinTaxValue_Es" ColumnName="WinTaxValue_Es" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="SoldCashier" ColumnName="SoldCashier" />
+                <ScalarProperty Name="SoldTerminal" ColumnName="SoldTerminal" />
+                <ScalarProperty Name="CashedCashier" ColumnName="CashedCashier" />
+                <ScalarProperty Name="CashedTerminal" ColumnName="CashedTerminal" />
+                <ScalarProperty Name="InfraestructureUse" ColumnName="InfraestructureUse" />
+                <ScalarProperty Name="IsDraw" ColumnName="IsDraw" />
+                <ScalarProperty Name="WagerType" ColumnName="WagerType" />
+                <ScalarProperty Name="FolioVenta" ColumnName="FolioVenta" />
+                <ScalarProperty Name="FolioPago" ColumnName="FolioPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
