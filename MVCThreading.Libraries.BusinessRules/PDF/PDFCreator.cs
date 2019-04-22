@@ -29,7 +29,7 @@ namespace MVCThreading.Libraries.BusinessRules.PDF
             // This neat trick opens our PDF file so we can see the result in our default PDF viewer
             //System.Diagnostics.Process.Start(OutputPath);
         }
-
+        //multi PDF
         public void getMultiPDF()
         {
             var HtmlTemplate = "<p>[[NAME]]</p>";
